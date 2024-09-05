@@ -1,27 +1,4 @@
-.. image:: ./.github/assets/logo.png
-
-|
-
-.. image:: https://github.com/nsidnev/fastapi-realworld-example-app/workflows/API%20spec/badge.svg
-   :target: https://github.com/nsidnev/fastapi-realworld-example-app
-
-.. image:: https://github.com/nsidnev/fastapi-realworld-example-app/workflows/Tests/badge.svg
-   :target: https://github.com/nsidnev/fastapi-realworld-example-app
-
-.. image:: https://github.com/nsidnev/fastapi-realworld-example-app/workflows/Styles/badge.svg
-   :target: https://github.com/nsidnev/fastapi-realworld-example-app
-
-.. image:: https://codecov.io/gh/nsidnev/fastapi-realworld-example-app/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/nsidnev/fastapi-realworld-example-app
-
-.. image:: https://img.shields.io/github/license/Naereen/StrapDown.js.svg
-   :target: https://github.com/nsidnev/fastapi-realworld-example-app/blob/master/LICENSE
-
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :target: https://github.com/ambv/black
-
-.. image:: https://img.shields.io/badge/style-wemake-000000.svg
-   :target: https://github.com/wemake-services/wemake-python-styleguide
+Fork of https://github.com/nsidnev/fastapi-realworld-example-app
 
 ----------
 
@@ -41,10 +18,9 @@ First, run ``PostgreSQL``, set environment variables and create database. For ex
 
 Then run the following commands to bootstrap your environment with ``poetry``: ::
 
-    git clone https://github.com/nsidnev/fastapi-realworld-example-app
+    git clone https://github.com/DataDog/fastapi-realworld-example-app
     cd fastapi-realworld-example-app
-    poetry install
-    poetry shell
+    pip install -r requirements.txt
 
 Then create ``.env`` file (or rename and modify ``.env.example``) in project root and set environment variables for application: ::
 
