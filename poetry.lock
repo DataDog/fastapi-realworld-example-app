@@ -2,14 +2,23 @@
 
 [[package]]
 name = "aiosql"
-version = "6.2"
+version = "11.1"
 description = "Simple SQL in Python"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "aiosql-6.2-py3-none-any.whl", hash = "sha256:b4b2b9a3ca129aa0fb44fa28d67d817bf4ac6c6fd663bfd15ed7e2c36562869d"},
-    {file = "aiosql-6.2.tar.gz", hash = "sha256:644b488c17143c0897084db158977b44e1801805329bed8a7e0d34d5ac4aa0ef"},
+    {file = "aiosql-11.1-py3-none-any.whl", hash = "sha256:8d737bf505285afceae5a7187e681cd394ff358cb855eb6984a76058ded69e88"},
+    {file = "aiosql-11.1.tar.gz", hash = "sha256:518e1fc7220087efc0b81098676495adb99de309eacd384003a78361dc187202"},
 ]
+
+[package.extras]
+dev = ["black", "build", "coverage", "flake8", "mypy", "pyright", "pytest", "pytest-asyncio", "rstcheck", "ruff", "types-setuptools"]
+dev-duckdb = ["duckdb"]
+dev-mariadb = ["mariadb"]
+dev-mysql = ["mysql-connector-python", "mysqlclient", "pymysql", "pytest-mysql"]
+dev-postgres = ["asyncpg", "pg8000", "psycopg (>=3)", "psycopg2", "pygresql", "pytest-postgresql"]
+dev-sqlite = ["aiosqlite", "apsw"]
+dist = ["build", "sphinx", "sphinx-rtd-theme", "twine", "wheel"]
 
 [[package]]
 name = "alembic"
@@ -1984,4 +1993,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6805dd7faea67734a0d2b1ce77234cb2e0a6ea56da6f698b7cdedcc884ac3b87"
+content-hash = "4280ec6084017f8b0da82e11701e178c0229c0ba80c81e658aedb0a145bc7019"
