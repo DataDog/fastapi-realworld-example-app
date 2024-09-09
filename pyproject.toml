@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-uvicorn = "^0.18.2"
+uvicorn = "^0.30.6"
 fastapi = "^0.79.1"
 pydantic = { version = "^1.10", extras = ["email", "dotenv"] }
 passlib = { version = "^1.7", extras = ["bcrypt"] }
@@ -30,12 +30,12 @@ wemake-python-styleguide = "^0.16.1"
 mypy = "^0.971"
 flake8-fixme = "^1.1"
 pytest = "^7.1"
-pytest-cov = "^3.0"
+pytest-cov = "^5.0"
 pytest-asyncio = "^0.19.0"
 pytest-env = "^0.6.2"
 pytest-xdist = "^2.4.0"
 httpx = "^0.23.0"
-asgi-lifespan = "^1.0.1"
+asgi-lifespan = "^2.1.0"
 
 [tool.isort]
 profile = "black"
