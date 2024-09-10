@@ -1,0 +1,28 @@
+Component,Origin,License,Copyright
+uvicorn,PyPI,BSD-3-Clause,Copyright (c) 2022, Tom Christie
+fastapi,PyPI,MIT,Copyright (c) 2019, Sebastián Ramírez
+pydantic,PyPI,MIT,Copyright (c) 2017-present, Samuel Colvin
+passlib[bcrypt],PyPI,BSD-3-Clause,Copyright (c) 2007-2020, Eli Collins
+pyjwt,PyPI,MIT,Copyright (c) 2015-2022, José Padilla
+databases,PyPI,MIT,Copyright (c) 2018, Encode OSS
+asyncpg,PyPI,Apache-2.0,Copyright (c) 2016-present, MagicStack Inc.
+psycopg2-binary,PyPI,LGPL-3.0,Copyright (c) 2021, Federico Di Gregorio
+aiosql,PyPI,MIT,Copyright (c) 2018, William Vaughn
+pypika,PyPI,Apache-2.0,Copyright (c) Timothy Heys
+alembic,PyPI,MIT,Copyright 2009-2024 Michael Bayer
+python-slugify,PyPI,MIT,Copyright (c) 2016-2022, Vánger Software
+Unidecode,PyPI,GPL-2.0,Copyright (c) 2009-2021, Tomaz Solc
+loguru,PyPI,MIT,Copyright (c) 2019-present, Delgan
+Black,PyPI,MIT,Copyright (c) 2018 Łukasz Langa
+isort,PyPI,MIT,Copyright (c) 2013 Timothy Edmund Crosley
+autoflake,PyPI,MIT,Copyright (C) Steven Myint
+wemake-python-styleguide,PyPI,MIT,Copyright (c) wemake.services
+mypy,PyPI,MIT,Copyright (c) mypy development team
+flake8-fixme,PyPI,MIT,Copyright (c) 2019 Tom Milligan
+pytest,PyPI,MIT,Copyright (c) 2004 Holger Krekel and others
+pytest-cov,PyPI,MIT,Copyright (c) 2010 Meme Dough
+pytest-asyncio,PyPI,Apache-2.0,Copyright (c) Tin Tvrtković
+pytest-env,PyPI,MIT,Copyright (c) 2010-202x The pytest-env developers
+pytest-xdist,PyPI,MIT,Copyright (c) 2010 Holger Krekel and contributors
+httpx,PyPI,BSD-3-Clause,Copyright (c) 2019-present Encode OSS
+asgi-lifespan,PyPI,BSD-3-Clause,Copyright (c) Encode OSS
