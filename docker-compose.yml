@@ -6,10 +6,26 @@ services:
       - "8000:8000"
     environment:
       DATABASE_URL: "postgresql://postgres:postgres@db/postgres"
+      DD_TRACE_AGENT_URL: "http://ddagent:8126"
     env_file:
       - .env
     depends_on:
       - db
+      - ddagent
+  ddagent:
+      image: datadog/agent:latest
+      environment:
+          - DD_HOSTNAME=github-actions-worker
+          - DD_BIND_HOST=0.0.0.0
+          - DD_SITE=${DD_SITE-datadoghq.com}
+          - DD_API_KEY=${DD_API_KEY-invalid_but_this_is_fine}
+          - DD_APM_RECEIVER_SOCKET=/tmp/ddagent/trace.sock
+          - DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true
+      ports:
+          - 8126:8126
+          - 8125:8125/udp
+      volumes:
+        - ddagent:/tmp/ddagent:rw
   db:
     image: postgres:11.5-alpine
     ports:
@@ -18,3 +34,5 @@ services:
       - .env
     volumes:
       - ./postgres-data:/var/lib/postgresql/data:cached
+volumes:
+    ddagent:
