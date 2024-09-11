@@ -4,7 +4,7 @@ pydantic[email,dotenv]==2.8.2
 passlib[bcrypt]==1.7.4
 pyjwt==2.4
 databases==0.6.1
-asyncpg==0.26.0
+asyncpg==0.29.0
 psycopg2-binary==2.9.3
 aiosql==6.2
 pypika==0.48.9
