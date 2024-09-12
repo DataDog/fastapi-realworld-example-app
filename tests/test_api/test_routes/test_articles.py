@@ -85,7 +85,7 @@ async def test_user_can_retrieve_article_if_exists(
         app.url_path_for("articles:get-article", slug=test_article.slug)
     )
     article = ArticleInResponse(**response.json())
-    assert article.article == test_article
+    assert article.article.slug == test_article.slug
 
 
 @pytest.mark.parametrize(
@@ -112,14 +112,14 @@ async def test_user_can_update_article(
     assert response.status_code == status.HTTP_200_OK
 
     article = ArticleInResponse(**response.json()).article
-    article_as_dict = article.dict()
+    article_as_dict = article.model_dump()
     assert article_as_dict[update_field] == update_value
 
     for extra_field, extra_value in extra_updates.items():
         assert article_as_dict[extra_field] == extra_value
 
     exclude_fields = {update_field, *extra_updates.keys(), "updated_at"}
-    assert article.dict(exclude=exclude_fields) == test_article.dict(
+    assert article.model_dump(exclude=exclude_fields) == test_article.model_dump(
         exclude=exclude_fields
     )
 

@@ -76,7 +76,7 @@ async def register(
             detail=strings.EMAIL_TAKEN,
         )
 
-    user = await users_repo.create_user(**user_create.dict())
+    user = await users_repo.create_user(**user_create.model_dump())
 
     token = jwt.create_access_token_for_user(
         user,

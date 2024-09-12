@@ -51,7 +51,7 @@ async def follow_for_user(
         requested_user=user,
     )
 
-    return ProfileInResponse(profile=profile.copy(update={"following": True}))
+    return ProfileInResponse(profile=profile.model_copy(update={"following": True}))
 
 
 @router.delete(
@@ -81,4 +81,4 @@ async def unsubscribe_from_user(
         requested_user=user,
     )
 
-    return ProfileInResponse(profile=profile.copy(update={"following": False}))
+    return ProfileInResponse(profile=profile.model_copy(update={"following": False}))

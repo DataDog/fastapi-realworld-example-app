@@ -42,7 +42,7 @@ async def list_articles(
         requested_user=user,
     )
     articles_for_response = [
-        ArticleForResponse.from_orm(article) for article in articles
+        ArticleForResponse.model_validate(article) for article in articles
     ]
     return ListOfArticlesInResponse(
         articles=articles_for_response,
@@ -76,14 +76,14 @@ async def create_new_article(
         author=user,
         tags=article_create.tags,
     )
-    return ArticleInResponse(article=ArticleForResponse.from_orm(article))
+    return ArticleInResponse(article=ArticleForResponse.model_validate(article))
 
 
 @router.get("/{slug}", response_model=ArticleInResponse, name="articles:get-article")
 async def retrieve_article_by_slug(
     article: Article = Depends(get_article_by_slug_from_path),
 ) -> ArticleInResponse:
-    return ArticleInResponse(article=ArticleForResponse.from_orm(article))
+    return ArticleInResponse(article=ArticleForResponse.model_validate(article))
 
 
 @router.put(
@@ -101,9 +101,9 @@ async def update_article_by_slug(
     article = await articles_repo.update_article(
         article=current_article,
         slug=slug,
-        **article_update.dict(),
+        **article_update.model_dump(),
     )
-    return ArticleInResponse(article=ArticleForResponse.from_orm(article))
+    return ArticleInResponse(article=ArticleForResponse.model_validate(article))
 
 
 @router.delete(

@@ -1,13 +1,13 @@
 import datetime
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class DateTimeModelMixin(BaseModel):
     created_at: datetime.datetime = None  # type: ignore
     updated_at: datetime.datetime = None  # type: ignore
 
-    @validator("created_at", "updated_at", pre=True)
+    @field_validator("created_at", "updated_at")
     def default_datetime(
         cls,  # noqa: N805
         value: datetime.datetime,  # noqa: WPS110

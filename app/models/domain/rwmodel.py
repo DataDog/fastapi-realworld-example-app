@@ -1,6 +1,6 @@
 import datetime
 
-from pydantic import BaseConfig, BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 def convert_datetime_to_realworld(dt: datetime.datetime) -> str:
@@ -15,7 +15,4 @@ def convert_field_to_camel_case(string: str) -> str:
 
 
 class RWModel(BaseModel):
-    class Config(BaseConfig):
-        allow_population_by_field_name = True
-        json_encoders = {datetime.datetime: convert_datetime_to_realworld}
-        alias_generator = convert_field_to_camel_case
+    model_config = ConfigDict(populate_by_name=True, alias_generator=convert_field_to_camel_case)

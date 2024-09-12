@@ -71,7 +71,7 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         body: Optional[str] = None,
         description: Optional[str] = None,
     ) -> Article:
-        updated_article = article.copy(deep=True)
+        updated_article = article.model_copy(deep=True)
         updated_article.slug = slug or updated_article.slug
         updated_article.title = title or article.title
         updated_article.body = body or article.body

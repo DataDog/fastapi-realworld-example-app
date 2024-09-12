@@ -20,13 +20,13 @@ def create_jwt_token(
 ) -> str:
     to_encode = jwt_content.copy()
     expire = datetime.utcnow() + expires_delta
-    to_encode.update(JWTMeta(exp=expire, sub=JWT_SUBJECT).dict())
+    to_encode.update(JWTMeta(exp=expire, sub=JWT_SUBJECT).model_dump())
     return jwt.encode(to_encode, secret_key, algorithm=ALGORITHM)
 
 
 def create_access_token_for_user(user: User, secret_key: str) -> str:
     return create_jwt_token(
-        jwt_content=JWTUser(username=user.username).dict(),
+        jwt_content=JWTUser(username=user.username).model_dump(),
         secret_key=secret_key,
         expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
     )
