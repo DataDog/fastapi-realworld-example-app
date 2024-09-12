@@ -84,7 +84,7 @@ async def test_user_can_update_own_profile(
     )
     assert response.status_code == status.HTTP_200_OK
 
-    user_profile = UserInResponse(**response.json()).dict()
+    user_profile = UserInResponse(**response.json()).model_dump()
     assert user_profile["user"][update_field] == update_value
 
 

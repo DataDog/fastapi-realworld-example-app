@@ -56,7 +56,7 @@ async def update_current_user(
                 detail=strings.EMAIL_TAKEN,
             )
 
-    user = await users_repo.update_user(user=current_user, **user_update.dict())
+    user = await users_repo.update_user(user=current_user, **user_update.model_dump())
 
     token = jwt.create_access_token_for_user(
         user,

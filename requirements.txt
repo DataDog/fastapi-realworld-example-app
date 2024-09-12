@@ -3,11 +3,12 @@ fastapi==0.114.1
 pydantic[email,dotenv]==2.9.1
 pydantic_settings==2.5.2
 passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
 pyjwt==2.4
 databases==0.6.1
 asyncpg==0.29.0
 psycopg2-binary==2.9.3
-aiosql==6.2
+aiosql==12.0
 pypika==0.48.9
 alembic==1.8
 python-slugify==6.1
@@ -21,7 +22,7 @@ autoflake==1.4
 wemake-python-styleguide==0.16.1
 mypy==0.971
 flake8-fixme==1.1.1
-pytest==7.1
+pytest==8.3.3
 pytest-cov==5.0.0
 pytest-asyncio==0.19.0
 pytest-env==0.6.2

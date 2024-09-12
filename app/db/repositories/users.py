@@ -45,7 +45,7 @@ class UsersRepository(BaseRepository):
                 hashed_password=user.hashed_password,
             )
 
-        return user.copy(update=dict(user_row))
+        return user.model_copy(update=dict(user_row))
 
     async def update_user(  # noqa: WPS211
         self,

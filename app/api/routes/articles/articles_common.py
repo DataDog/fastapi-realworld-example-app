@@ -36,7 +36,7 @@ async def get_articles_for_user_feed(
         offset=offset,
     )
     articles_for_response = [
-        ArticleForResponse(**article.dict()) for article in articles
+        ArticleForResponse(**article.model_dump()) for article in articles
     ]
     return ListOfArticlesInResponse(
         articles=articles_for_response,
@@ -58,8 +58,8 @@ async def mark_article_as_favorite(
         await articles_repo.add_article_into_favorites(article=article, user=user)
 
         return ArticleInResponse(
-            article=ArticleForResponse.from_orm(
-                article.copy(
+            article=ArticleForResponse.model_validate(
+                article.model_copy(
                     update={
                         "favorited": True,
                         "favorites_count": article.favorites_count + 1,
@@ -88,8 +88,8 @@ async def remove_article_from_favorites(
         await articles_repo.remove_article_from_favorites(article=article, user=user)
 
         return ArticleInResponse(
-            article=ArticleForResponse.from_orm(
-                article.copy(
+            article=ArticleForResponse.model_validate(
+                article.model_copy(
                     update={
                         "favorited": False,
                         "favorites_count": article.favorites_count - 1,
