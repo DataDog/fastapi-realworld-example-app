@@ -1,6 +1,6 @@
 uvicorn==0.18.2
 fastapi==0.114.1
-pydantic[email,dotenv]==2.9.1
+pydantic[email,dotenv]==2.9.2
 pydantic_settings==2.5.2
 passlib[bcrypt]==1.7.4
 bcrypt==4.0.1
