@@ -8,7 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.10"
 ddtrace = "^2.12"
-uvicorn = "^0.30.6"
+uvicorn = "^0.31.0"
 fastapi = "^0.114.1"
 pydantic = { version = "^2.9.1", extras = ["email", "dotenv"] }
 pydantic_settings = { version = "^2.5.2", extras = ["email", "dotenv"] }
