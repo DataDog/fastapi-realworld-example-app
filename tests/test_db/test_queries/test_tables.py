@@ -13,7 +13,6 @@ def test_typed_table_use_class_attribute_as_table_name() -> None:
 
 
 def test_typed_table_use_class_name_as_table_name() -> None:
-    class NewTable(TypedTable):
-        ...
+    class NewTable(TypedTable): ...
 
     assert NewTable().get_table_name() == "NewTable"

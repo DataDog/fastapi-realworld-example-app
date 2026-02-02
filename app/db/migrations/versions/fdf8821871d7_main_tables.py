@@ -5,6 +5,7 @@ Revises:
 Create Date: 2019-09-22 01:36:44.791880
 
 """
+
 from typing import Tuple
 
 import sqlalchemy as sa

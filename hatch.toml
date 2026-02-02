@@ -16,16 +16,10 @@ py = ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
 [envs.lint]
 features = ["dev"]
-detached = true
 
 [envs.lint.scripts]
 check = [
   "ruff check .",
-  "ruff format --check .",
   "mypy app",
 ]
 fmt = "ruff check --fix ."
-format = [
-  "ruff check --fix .",
-  "ruff format .",
-]

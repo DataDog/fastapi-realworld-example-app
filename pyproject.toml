@@ -39,6 +39,7 @@ filterwarnings = [
   "ignore::jwt.warnings.InsecureKeyLengthWarning",
   "ignore::passlib.exc.PasslibHashWarning",
   "ignore::DeprecationWarning:passlib.*",
+  "ignore:'crypt' is deprecated:DeprecationWarning",
 ]
 addopts = '''
   --strict-markers

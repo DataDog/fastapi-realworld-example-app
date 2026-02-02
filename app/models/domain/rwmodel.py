@@ -15,4 +15,6 @@ def convert_field_to_camel_case(string: str) -> str:
 
 
 class RWModel(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, alias_generator=convert_field_to_camel_case)
+    model_config = ConfigDict(
+        populate_by_name=True, alias_generator=convert_field_to_camel_case
+    )

@@ -3,7 +3,7 @@ from typing import List, Optional
 from asyncpg import Connection, Record
 
 from app.db.errors import EntityDoesNotExist
-from app.db.queries.queries import queries
+from app.db.queries import _execute_query, queries
 from app.db.repositories.base import BaseRepository
 from app.db.repositories.profiles import ProfilesRepository
 from app.models.domain.articles import Article
@@ -45,10 +45,11 @@ class CommentsRepository(BaseRepository):
         article: Article,
         user: Optional[User] = None,
     ) -> List[Comment]:
-        comments_rows = [row async for row in queries.get_comments_for_article_by_slug(
+        comments_rows = await _execute_query(
+            queries.get_comments_for_article_by_slug,
             self.connection,
             slug=article.slug,
-        )]
+        )
         return [
             await self._get_comment_from_db_record(
                 comment_row=comment_row,
