@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Dict
 
 import jwt
@@ -19,7 +19,7 @@ def create_jwt_token(
     expires_delta: timedelta,
 ) -> str:
     to_encode = jwt_content.copy()
-    expire = datetime.utcnow() + expires_delta
+    expire = datetime.now(UTC) + expires_delta
     to_encode.update(JWTMeta(exp=expire, sub=JWT_SUBJECT).model_dump())
     return jwt.encode(to_encode, secret_key, algorithm=ALGORITHM)
 

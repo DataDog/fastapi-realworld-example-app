@@ -3,4 +3,5 @@
 set -e
 set -x
 
-pytest --cov=app --cov=tests --cov-report=term-missing --cov-config=setup.cfg ${@}
+# Use default Python version from hatch environment
+hatch run unit_tests:test ${@}

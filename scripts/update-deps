@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+# Update uv lock file with latest dependencies
+echo "Updating uv.lock with latest dependencies..."
+uv lock --upgrade
+
+# Export to requirements.txt
+echo "Exporting to requirements.txt..."
+uv export --no-hashes --no-dev > requirements.txt
+
+echo "Dependencies updated successfully!"
+echo "- uv.lock: Updated with latest compatible versions"
+echo "- requirements.txt: Exported from uv.lock"

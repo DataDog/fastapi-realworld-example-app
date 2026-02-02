@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
+set -x
 
-isort --force-single-line-imports app tests
-autoflake --recursive --remove-all-unused-imports --remove-unused-variables --in-place app tests
-black app tests
-isort app tests
+hatch run lint:format

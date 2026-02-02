@@ -218,12 +218,12 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         limit: int = 20,
         offset: int = 0,
     ) -> List[Article]:
-        articles_rows = await queries.get_articles_for_feed(
+        articles_rows = [row async for row in queries.get_articles_for_feed(
             self.connection,
             follower_username=user.username,
             limit=limit,
             offset=offset,
-        )
+        )]
         return [
             await self._get_article_from_db_record(
                 article_row=article_row,
@@ -252,10 +252,10 @@ class ArticlesRepository(BaseRepository):  # noqa: WPS214
         raise EntityDoesNotExist("article with slug {0} does not exist".format(slug))
 
     async def get_tags_for_article_by_slug(self, *, slug: str) -> List[str]:
-        tag_rows = await queries.get_tags_for_article_by_slug(
+        tag_rows = [row async for row in queries.get_tags_for_article_by_slug(
             self.connection,
             slug=slug,
-        )
+        )]
         return [row["tag"] for row in tag_rows]
 
     async def get_favorites_count_for_article_by_slug(self, *, slug: str) -> int:

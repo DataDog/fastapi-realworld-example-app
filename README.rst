@@ -16,7 +16,7 @@ First, run ``PostgreSQL``, set environment variables and create database. For ex
     export POSTGRES_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' pgdb)
     createdb --host=$POSTGRES_HOST --port=$POSTGRES_PORT --username=$POSTGRES_USER $POSTGRES_DB
 
-Then run the following commands to bootstrap your environment with ``poetry``: ::
+Then run the following commands to bootstrap your environment: ::
 
     git clone https://github.com/DataDog/fastapi-realworld-example-app
     cd fastapi-realworld-example-app
@@ -51,6 +51,10 @@ Run tests
 ---------
 
 Tests for this project are defined in the ``tests/`` folder.
+
+**IMPORTANT: Start PostgreSQL database before running tests**::
+
+    docker compose up -d db
 
 Set up environment variable ``DATABASE_URL`` or set up ``database_url`` in ``app/core/settings/test.py``
 
@@ -92,13 +96,13 @@ If you want to run a specific test, you can do this with `this
 Deployment with Docker
 ----------------------
 
-You must have ``docker`` and ``docker-compose`` tools installed to work with material in this section.
+You must have ``docker`` and ``docker compose`` tools installed to work with material in this section.
 First, create ``.env`` file like in `Quickstart` section or modify ``.env.example``.
-``POSTGRES_HOST`` must be specified as `db` or modified in ``docker-compose.yml`` also.
+``POSTGRES_HOST`` must be specified as `db` or modified in ``docker compose.yml`` also.
 Then just run::
 
-    docker-compose up -d db
-    docker-compose up -d app
+    docker compose up -d db
+    docker compose up -d app
 
 Application will be available on ``localhost`` in your browser.
 

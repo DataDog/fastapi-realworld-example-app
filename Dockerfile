@@ -1,4 +1,4 @@
-FROM python:3.12.6-bookworm
+FROM python:3.14-bookworm
 
 ENV PYTHONUNBUFFERED 1
 
@@ -38,10 +38,18 @@ RUN apt-get update \
 # Setup Rust compiler
 RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
 
-COPY poetry.lock pyproject.toml ./
-RUN pip install -U poetry==1.8.3 ddtrace && \
-    poetry config virtualenvs.in-project true && \
-    poetry install --no-dev
+# Install uv - fast Python package manager
+ENV PATH="/root/.local/bin:$PATH"
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Copy dependency files
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies using uv (production only, no dev dependencies)
+# --frozen: use exact versions from uv.lock without updating
+# --no-group dev: skip dev dependency group
+RUN uv sync --frozen --no-group dev && \
+    uv pip install ddtrace
 
 COPY . ./
 
@@ -57,5 +65,5 @@ ENV DD_APPSEC_ENABLED true
 ENV _DD_IAST_DEBUG true
 
 
-CMD poetry run alembic upgrade head && \
-    poetry run ddtrace-run uvicorn --host=0.0.0.0 app.main:app
+CMD uv run alembic upgrade head && \
+    uv run ddtrace-run uvicorn --host=0.0.0.0 app.main:app

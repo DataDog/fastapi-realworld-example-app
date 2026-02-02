@@ -13,11 +13,11 @@ jobs:
   api-spec:
     name: API spec tests
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        python-version: [3.9]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
     services:
       postgres:
@@ -37,32 +37,19 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: "1.1.12"
-          virtualenvs-in-project: true
+      - name: Install Hatch
+        run: pip install hatch
 
-      - name: Set up cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-py-${{ matrix.python-version }}-poetry-${{ hashFiles('poetry.lock') }}
-
-      - name: Ensure cache is healthy
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: poetry run pip --version >/dev/null 2>&1 || rm -rf .venv
-
-      - name: Install dependencies
-        run: poetry install --no-interaction
-
-      - name: Run newman and test service
+      - name: Setup environment and run API spec tests
         env:
           SECRET_KEY: secret_key
           DATABASE_URL: postgresql://postgres:postgres@localhost/postgres
         run: |
-          poetry run alembic upgrade head
-          poetry run uvicorn app.main:app &
+          hatch run +py=${{ matrix.python-version }} unit_tests:test --version
+          hatch env create +py=${{ matrix.python-version }} unit_tests
+          ENV_PATH=$(hatch env find +py=${{ matrix.python-version }} unit_tests)
+          $ENV_PATH/bin/alembic upgrade head
+          $ENV_PATH/bin/uvicorn app.main:app &
+          sleep 5
           APIURL=http://localhost:8000/api ./postman/run-api-tests.sh
-          poetry run alembic downgrade base
+          $ENV_PATH/bin/alembic downgrade base

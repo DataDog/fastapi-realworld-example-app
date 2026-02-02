@@ -3,4 +3,4 @@
 set -e
 set -x
 
-bash scripts/test --cov-report=html ${@}
+hatch run unit_tests:test --cov-report=html ${@}

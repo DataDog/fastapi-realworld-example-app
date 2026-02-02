@@ -1,0 +1,31 @@
+[envs.default]
+dependencies = []
+
+[envs.unit_tests]
+features = ["dev"]
+
+[envs.unit_tests.scripts]
+test = "alembic upgrade head && pytest --cov=app --cov=tests --cov-report=term-missing --cov-report=html --cov-report=xml --cov-config=setup.cfg {args}"
+
+[envs.unit_tests.env-vars]
+SECRET_KEY = "secret"
+DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
+
+[[envs.unit_tests.matrix]]
+py = ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+
+[envs.lint]
+features = ["dev"]
+detached = true
+
+[envs.lint.scripts]
+check = [
+  "ruff check .",
+  "ruff format --check .",
+  "mypy app",
+]
+fmt = "ruff check --fix ."
+format = [
+  "ruff check --fix .",
+  "ruff format .",
+]
