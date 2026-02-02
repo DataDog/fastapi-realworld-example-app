@@ -1,4 +1,5 @@
-from datetime import datetime, timedelta
+import sys
+from datetime import datetime, timedelta, timezone
 from typing import Dict
 
 import jwt
@@ -6,6 +7,12 @@ from pydantic import ValidationError
 
 from app.models.domain.users import User
 from app.models.schemas.jwt import JWTMeta, JWTUser
+
+# Python 3.11+ has UTC, but 3.9-3.10 need timezone.utc
+if sys.version_info >= (3, 11):
+    from datetime import UTC
+else:
+    UTC = timezone.utc  # type: ignore[misc]
 
 JWT_SUBJECT = "access"
 ALGORITHM = "HS256"
@@ -19,7 +26,7 @@ def create_jwt_token(
     expires_delta: timedelta,
 ) -> str:
     to_encode = jwt_content.copy()
-    expire = datetime.utcnow() + expires_delta
+    expire = datetime.now(UTC) + expires_delta
     to_encode.update(JWTMeta(exp=expire, sub=JWT_SUBJECT).model_dump())
     return jwt.encode(to_encode, secret_key, algorithm=ALGORITHM)
 

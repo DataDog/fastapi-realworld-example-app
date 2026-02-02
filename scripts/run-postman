@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Default values
+PYTHON_VERSION="${1:-3.14}"
+PORT="${PORT:-8000}"
+APIURL="${APIURL:-http://localhost:${PORT}/api}"
+
+echo -e "${GREEN}=== FastAPI RealWorld API Spec Tests ===${NC}"
+echo "Python version: ${PYTHON_VERSION}"
+echo "API URL: ${APIURL}"
+echo ""
+
+# Ensure environment variables are set
+export SECRET_KEY="${SECRET_KEY:-secret_key}"
+export DATABASE_URL="${DATABASE_URL:-postgresql://postgres:postgres@localhost/postgres}"
+
+echo -e "${YELLOW}Step 1: Verify Hatch environment${NC}"
+if ! command -v hatch &> /dev/null; then
+    echo -e "${RED}Error: hatch not found. Install it with: pip install hatch${NC}"
+    exit 1
+fi
+
+# Get hatch environment info
+echo -e "${YELLOW}Step 2: Create/verify Hatch environment for Python ${PYTHON_VERSION}${NC}"
+hatch env create unit_tests.py${PYTHON_VERSION} || true
+
+# Find the environment path
+ENV_PATH=$(hatch env find unit_tests.py${PYTHON_VERSION})
+echo "Environment path: ${ENV_PATH}"
+
+if [ ! -d "${ENV_PATH}" ]; then
+    echo -e "${RED}Error: Environment not found at ${ENV_PATH}${NC}"
+    exit 1
+fi
+
+# Cleanup function to ensure we stop uvicorn and downgrade DB
+cleanup() {
+    local exit_code=$?
+    echo ""
+    echo -e "${YELLOW}Cleaning up...${NC}"
+
+    # Kill uvicorn if it's running
+    if [ ! -z "${UVICORN_PID}" ] && kill -0 ${UVICORN_PID} 2>/dev/null; then
+        echo "Stopping uvicorn (PID: ${UVICORN_PID})"
+        kill ${UVICORN_PID} 2>/dev/null || true
+        wait ${UVICORN_PID} 2>/dev/null || true
+    fi
+
+    # Downgrade database
+    echo "Downgrading database..."
+    ${ENV_PATH}/bin/alembic downgrade base || true
+
+    if [ $exit_code -eq 0 ]; then
+        echo -e "${GREEN}✓ Tests completed successfully${NC}"
+    else
+        echo -e "${RED}✗ Tests failed with exit code ${exit_code}${NC}"
+    fi
+
+    exit $exit_code
+}
+
+trap cleanup EXIT INT TERM
+
+# Check database connectivity
+echo -e "${YELLOW}Step 3: Check database connectivity${NC}"
+if ! ${ENV_PATH}/bin/python -c "import asyncpg; import asyncio; asyncio.run(asyncpg.connect('${DATABASE_URL}'))" 2>/dev/null; then
+    echo -e "${RED}Error: Cannot connect to database at ${DATABASE_URL}${NC}"
+    echo "Make sure PostgreSQL is running: docker compose up -d db"
+    exit 1
+fi
+echo "✓ Database connection successful"
+
+# Run migrations
+echo -e "${YELLOW}Step 4: Run database migrations${NC}"
+${ENV_PATH}/bin/alembic upgrade head
+
+# Start uvicorn in background
+echo -e "${YELLOW}Step 5: Start uvicorn server${NC}"
+${ENV_PATH}/bin/uvicorn app.main:app --host 0.0.0.0 --port ${PORT} &
+UVICORN_PID=$!
+echo "Uvicorn started with PID: ${UVICORN_PID}"
+
+# Wait for server to be ready
+echo "Waiting for server to be ready..."
+sleep 5
+
+# Check if server is running
+if ! kill -0 ${UVICORN_PID} 2>/dev/null; then
+    echo -e "${RED}Error: Uvicorn failed to start${NC}"
+    exit 1
+fi
+
+# Check if server is responding
+MAX_RETRIES=10
+RETRY_COUNT=0
+while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
+    if curl -s -o /dev/null -w "%{http_code}" http://localhost:${PORT}/api | grep -q "200\|404"; then
+        echo "✓ Server is responding"
+        break
+    fi
+    echo "Waiting for server... (attempt $((RETRY_COUNT + 1))/${MAX_RETRIES})"
+    sleep 2
+    RETRY_COUNT=$((RETRY_COUNT + 1))
+done
+
+if [ $RETRY_COUNT -eq $MAX_RETRIES ]; then
+    echo -e "${RED}Error: Server not responding after ${MAX_RETRIES} attempts${NC}"
+    exit 1
+fi
+
+# Run API spec tests
+echo -e "${YELLOW}Step 6: Run Postman/API spec tests${NC}"
+if [ ! -f "./postman/run-api-tests.sh" ]; then
+    echo -e "${RED}Error: ./postman/run-api-tests.sh not found${NC}"
+    exit 1
+fi
+
+APIURL=${APIURL} ./postman/run-api-tests.sh
+
+echo -e "${GREEN}✓ All API spec tests completed${NC}"

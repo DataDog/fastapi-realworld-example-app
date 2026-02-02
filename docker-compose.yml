@@ -5,10 +5,10 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "postgresql://postgres:postgres@db/postgres"
-      DD_TRACE_AGENT_URL: "http://ddagent:8126"
-    env_file:
-      - .env
+      DATABASE_URL: ${DATABASE_URL:-postgresql://postgres:postgres@db/postgres}
+      DD_TRACE_AGENT_URL: ${DD_TRACE_AGENT_URL:-http://ddagent:8126}
+      SECRET_KEY: ${SECRET_KEY:-insecure-dev-key-change-in-production}
+      APP_ENV: ${APP_ENV:-dev}
     depends_on:
       - db
       - ddagent
@@ -30,8 +30,10 @@ services:
     image: postgres:11.5-alpine
     ports:
       - "5432:5432"
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
     volumes:
       - ./postgres-data:/var/lib/postgresql/data:cached
 volumes:

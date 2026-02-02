@@ -34,8 +34,8 @@ def get_application() -> FastAPI:
         create_stop_app_handler(application),
     )
 
-    application.add_exception_handler(HTTPException, http_error_handler)
-    application.add_exception_handler(RequestValidationError, http422_error_handler)
+    application.add_exception_handler(HTTPException, http_error_handler)  # type: ignore[arg-type]
+    application.add_exception_handler(RequestValidationError, http422_error_handler)  # type: ignore[arg-type]
 
     application.include_router(api_router, prefix=settings.api_prefix)
 

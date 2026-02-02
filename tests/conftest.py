@@ -4,7 +4,7 @@ import pytest
 from asgi_lifespan import LifespanManager
 from asyncpg.pool import Pool
 from fastapi import FastAPI
-from httpx import AsyncClient
+from httpx import ASGITransport, AsyncClient
 
 from app.db.repositories.articles import ArticlesRepository
 from app.db.repositories.users import UsersRepository
@@ -38,7 +38,7 @@ def pool(initialized_app: FastAPI) -> Pool:
 @pytest.fixture
 async def client(initialized_app: FastAPI) -> AsyncClient:
     async with AsyncClient(
-        app=initialized_app,
+        transport=ASGITransport(app=initialized_app),
         base_url="http://testserver",
         headers={"Content-Type": "application/json"},
     ) as client:

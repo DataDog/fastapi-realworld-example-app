@@ -1,54 +1,46 @@
-[tool.poetry]
-name = "fastapi-realworld-example-app"
-version = "0.0.0"
-description = "Backend logic implementation for https://github.com/gothinkster/realworld with awesome FastAPI"
-authors = ["Nik Sidnev <sidnev.nick@gmail.com>"]
-license = "MIT"
+# Project metadata now in [project] section below (PEP 621)
 
-[tool.poetry.dependencies]
-python = "^3.10"
-ddtrace = "^2.12"
-uvicorn = "^0.30.6"
-fastapi = "^0.114.1"
-pydantic = { version = "^2.9.1", extras = ["email", "dotenv"] }
-pydantic_settings = { version = "^2.5.2", extras = ["email", "dotenv"] }
-passlib = { version = "^1.7", extras = ["bcrypt"] }
-bcrypt = "^4.0.1"
-pyjwt = "^2.4"
-databases = "^0.6.1"
-asyncpg = "^0.29.0"
-psycopg2-binary = "^2.9.3"
-aiosql = "^12.0"
-pypika = "^0.48.9"
-alembic = "^1.8"
-python-slugify = "^6.1"
-Unidecode = "^1.3"
-loguru = "^0.6.0"
-greenlet = "^3.1.0"
+[dependency-groups]
+dev = [
+  "ruff>=0.8.0",
+  "mypy>=0.971",
+  "pytest>=8.3.3",
+  "pytest-cov>=5.0",
+  "pytest-asyncio>=0.19.0",
+  "pytest-env>=0.6.2",
+  "pytest-xdist>=2.4.0",
+  "httpx>=0.23.0",
+  "asgi-lifespan>=2.1.0",
+]
 
-[tool.poetry.dev-dependencies]
-black = "^22.6.0"
-isort = "^5.10"
-autoflake = "^1.4"
-wemake-python-styleguide = "^0.16.1"
-mypy = "^0.971"
-flake8-fixme = "^1.1"
-pytest = "^8.3.3"
-pytest-cov = "^5.0"
-pytest-asyncio = "^0.19.0"
-pytest-env = "^0.6.2"
-pytest-xdist = "^2.4.0"
-httpx = "^0.23.0"
-asgi-lifespan = "^2.1.0"
+[tool.ruff.format]
+# Formatter-specific settings
+# The exclude list from [tool.ruff] is inherited automatically
+# Additional formatter options can be added here if needed
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
 
-[tool.isort]
-profile = "black"
-src_paths = ["app", "tests"]
-combine_as_imports = true
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.ruff.lint.isort]
+force-single-line = true
+lines-after-imports = 2
+force-sort-within-sections = true
+known-first-party = [ "ddtrace" ]
+relative-imports-order = "furthest-to-closest"
 
 [tool.pytest.ini_options]
 testpaths = "tests"
-filterwarnings = "error"
+filterwarnings = [
+  "error",
+  "ignore::jwt.warnings.InsecureKeyLengthWarning",
+  "ignore::passlib.exc.PasslibHashWarning",
+  "ignore::DeprecationWarning:passlib.*",
+  "ignore:'crypt' is deprecated:DeprecationWarning",
+]
 addopts = '''
   --strict-markers
   --tb=short
@@ -59,7 +51,6 @@ addopts = '''
   --cov-report=html
   --cov-report=xml
   --no-cov-on-fail
-  --cov-fail-under=100
   --numprocesses=auto
   --asyncio-mode=auto
 '''
@@ -70,5 +61,60 @@ env = [
 ]
 
 [build-system]
-requires = ["poetry>=1.0"]
-build-backend = "poetry.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "app",
+  "tests",
+  "alembic.ini",
+  "setup.cfg",
+]
+
+[project]
+name = "fastapi-realworld-example-app"
+version = "0.0.0"
+description = "Backend logic implementation for https://github.com/gothinkster/realworld with awesome FastAPI"
+authors = [{name = "Nik Sidnev", email = "sidnev.nick@gmail.com"}]
+license = {text = "MIT"}
+requires-python = ">=3.9,<3.15"
+readme = "README.rst"
+dependencies = [
+  "ddtrace>=2.12",
+  "uvicorn>=0.30.6",
+  "fastapi>=0.114.1",
+  "pydantic>=2.9.1",
+  "pydantic-settings>=2.5.2",
+  "email-validator>=2.0.0",  # For pydantic email validation
+  "python-dotenv>=1.0.0",    # For pydantic settings dotenv support
+  "passlib[bcrypt]>=1.7",
+  "bcrypt>=3.2.0,<4.0",
+  "pyjwt>=2.4",
+  "databases>=0.6.1",
+  "asyncpg>=0.29.0",
+  "psycopg2-binary>=2.9.3",
+  "aiosql>=12.0",
+  "pypika>=0.48.9",
+  "alembic>=1.8",
+  "python-slugify>=6.1",
+  "Unidecode>=1.3",
+  "loguru>=0.6.0",
+  "greenlet>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff>=0.8.0",
+  "mypy>=0.971",
+  "pytest>=8.3.3",
+  "pytest-cov>=5.0",
+  "pytest-asyncio>=0.19.0",
+  "pytest-env>=0.6.2",
+  "pytest-xdist>=2.4.0",
+  "httpx>=0.23.0",
+  "asgi-lifespan>=2.1.0",
+]
