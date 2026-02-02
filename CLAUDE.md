@@ -164,6 +164,42 @@ hatch run lint:format      # Run ruff check --fix . and ruff format .
 hatch run lint:check       # Check without fixing
 ```
 
+### API Spec Tests (Postman/Newman)
+
+Run the full RealWorld API specification tests locally:
+
+```bash
+# Make sure database is running
+docker compose up -d db
+
+# Run API spec tests with default Python version (3.14)
+./scripts/run-postman
+
+# Run with specific Python version
+./scripts/run-postman 3.12
+
+# Run with custom port
+PORT=8080 ./scripts/run-postman
+
+# Run with custom API URL
+APIURL=http://localhost:8080/api ./scripts/run-postman
+```
+
+**What it does:**
+1. Creates/verifies Hatch environment for specified Python version
+2. Checks database connectivity
+3. Runs Alembic migrations (`upgrade head`)
+4. Starts uvicorn server in background
+5. Waits for server to be ready
+6. Runs Postman API spec tests via Newman
+7. Cleans up: stops server and downgrades database (`downgrade base`)
+
+**Environment variables:**
+- `SECRET_KEY` - JWT secret key (default: `secret_key`)
+- `DATABASE_URL` - PostgreSQL connection string (default: `postgresql://postgres:postgres@localhost/postgres`)
+- `PORT` - Server port (default: `8000`)
+- `APIURL` - API base URL for tests (default: `http://localhost:8000/api`)
+
 ### Dependency Management
 
 ```bash

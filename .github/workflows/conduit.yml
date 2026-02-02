@@ -44,12 +44,4 @@ jobs:
         env:
           SECRET_KEY: secret_key
           DATABASE_URL: postgresql://postgres:postgres@localhost/postgres
-        run: |
-          hatch run +py=${{ matrix.python-version }} unit_tests:test --version
-          hatch env create +py=${{ matrix.python-version }} unit_tests
-          ENV_PATH=$(hatch env find +py=${{ matrix.python-version }} unit_tests)
-          $ENV_PATH/bin/alembic upgrade head
-          $ENV_PATH/bin/uvicorn app.main:app &
-          sleep 5
-          APIURL=http://localhost:8000/api ./postman/run-api-tests.sh
-          $ENV_PATH/bin/alembic downgrade base
+        run: ./scripts/run-postman ${{ matrix.python-version }}
