@@ -827,7 +827,7 @@ provides-extras = ["dev"]
 dev = [
     { name = "asgi-lifespan", specifier = ">=2.1.0" },
     { name = "httpx", specifier = ">=0.23.0" },
-    { name = "mypy", specifier = ">=0.971" },
+    { name = "mypy", specifier = ">=1.19.1" },
     { name = "pytest", specifier = ">=8.3.3" },
     { name = "pytest-asyncio", specifier = ">=0.19.0" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
