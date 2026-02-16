@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hatch env prune:*)",
+      "Bash(hatch run:*)",
+      "Bash(pyenv shell:*)",
+      "Bash(while read branch)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(gh pr list:*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(uv lock:*)",
+      "Bash(uv export:*)",
+      "Bash(uv sync:*)",
+      "Bash(uv run alembic:*)",
+      "Bash(uv run pytest:*)",
+      "Bash(uv pip list:*)",
+      "Bash(pip install:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}

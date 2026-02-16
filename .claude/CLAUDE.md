@@ -1,4 +1,4 @@
-# CLAUDE.md
+g# CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
@@ -368,3 +368,51 @@ This project supports Python 3.9 through 3.14:
   - Defines `unit_tests` environment with matrix for all supported versions
   - Defines `lint` environment for code quality checks
 - The `unit_tests:test` script automatically runs `alembic upgrade head` before running pytest
+
+## Claude Code Skills
+
+### Pull Request Review
+
+Use the `/review-pr` skill to perform comprehensive pull request reviews:
+
+```bash
+# Review a PR by number
+/review-pr 123
+
+# Review a PR by URL
+/review-pr https://github.com/nsidnev/fastapi-realworld-example-app/pull/123
+
+# Review current branch changes
+/review-pr
+```
+
+**What it checks:**
+- Code quality and style adherence
+- Architecture pattern compliance (repository pattern, dependency injection)
+- Test coverage and quality (100% coverage required)
+- Security issues (SQL injection, XSS, authentication)
+- Performance considerations (N+1 queries, async patterns)
+- Python version compatibility (3.9-3.14)
+- Type hints and Pydantic models
+- Database migrations (if schema changed)
+
+**Documentation:**
+- Skill: `.claude/skills/review-pr.md` - Detailed review process
+- Context: `.claude/context/pr-review.md` - Code standards and common issues
+
+**Review Output:**
+The skill provides structured feedback with:
+- Summary of changes
+- Strengths and positive aspects
+- Issues categorized by severity (Critical/Major/Minor)
+- Specific recommendations
+- Test results and coverage
+- Compliance checklist
+
+### Custom Skills
+
+To add new skills for this project:
+1. Create skill file in `.claude/skills/<skill-name>.md`
+2. Define usage, process, and examples
+3. Reference relevant context files
+4. Update this section with skill documentation
