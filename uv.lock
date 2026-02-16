@@ -802,7 +802,7 @@ requires-dist = [
     { name = "fastapi", specifier = ">=0.114.1" },
     { name = "greenlet", specifier = ">=3.1.0" },
     { name = "httpx", marker = "extra == 'dev'", specifier = ">=0.23.0" },
-    { name = "loguru", specifier = ">=0.6.0" },
+    { name = "loguru", specifier = ">=0.7.3" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=0.971" },
     { name = "passlib", extras = ["bcrypt"], specifier = ">=1.7" },
     { name = "psycopg2-binary", specifier = ">=2.9.3" },
