@@ -9,7 +9,7 @@ This document provides comprehensive context for reviewing pull requests in the 
 - **Type Hints**: All functions must have type hints for parameters and return values
 - **Docstrings**: Public APIs should have docstrings following Google style
 - **Naming**: Follow PEP 8 conventions (snake_case for functions/variables, PascalCase for classes)
-- **Line Length**: Max 88 characters (Ruff default, not Black's 88)
+- **Line Length**: Max 88 characters (Ruff default)
 - **Imports**: Organized automatically by Ruff (stdlib, third-party, local)
 
 ### Architecture Patterns

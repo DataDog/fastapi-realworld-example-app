@@ -9,7 +9,7 @@ This skill enables Claude Code to perform comprehensive pull request reviews for
 /review-pr 123
 
 # Review a PR by URL
-/review-pr https://github.com/nsidnev/fastapi-realworld-example-app/pull/123
+/review-pr https://github.com/DataDog/fastapi-realworld-example-app/pull/123
 
 # Review current branch changes
 /review-pr

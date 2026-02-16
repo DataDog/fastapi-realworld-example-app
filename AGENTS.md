@@ -42,7 +42,7 @@ AI agent configurations are stored in the `.claude/` directory:
 │   └── review-pr.md    # Pull request review skill
 ├── context/            # Contextual information for AI agents
 │   └── pr-review.md    # PR review guidelines and standards
-└── settings.local.json # Local Claude Code settings
+└── settings.json       # Local Claude Code settings
 ```
 
 ## Contributing with AI Agents
@@ -78,4 +78,4 @@ AI agents should:
 
 - **Claude Code**: Use `/help` command or visit https://github.com/anthropics/claude-code
 - **Project Questions**: See [.claude/CLAUDE.md](.claude/CLAUDE.md) or README.md
-- **Issues**: Report bugs at https://github.com/nsidnev/fastapi-realworld-example-app/issues
+- **Issues**: Report bugs at https://github.com/DataDog/fastapi-realworld-example-app/issues
