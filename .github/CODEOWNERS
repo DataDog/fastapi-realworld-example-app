@@ -2,6 +2,5 @@
 # Each line is a file pattern followed by one or more owners.
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
-* @DataDog/CodexBot
-# All files in the repository are owned by the APM Python team
-* @DataDog/apm-python
+# All files in the repository are owned by CodexBot and the APM Python team
+* @DataDog/CodexBot @DataDog/apm-python
