@@ -27,9 +27,7 @@ def app() -> FastAPI:
 async def initialized_app(app: FastAPI) -> FastAPI:
     async with LifespanManager(app):
         app.state.pool = await FakeAsyncPGPool.create_pool(app.state.pool)
-        yield app
-
-
+        yield
 @pytest.fixture
 def pool(initialized_app: FastAPI) -> Pool:
     return initialized_app.state.pool

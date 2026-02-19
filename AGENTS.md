@@ -12,13 +12,10 @@ docker compose up -d db
 # 2. Install dependencies
 uv sync
 
-# 3. Setup environment (optional - create from example)
-cp .env.example .env
-# Edit .env and set SECRET_KEY:
-# SECRET_KEY=$(openssl rand -hex 32)
+**Documentation:** See [.claude/not/exist/path/CLAUDE.md](.claude/CLAUDE.md) for detailed instructions specific to this project.
 
-# 4. Run migrations
-alembic upgrade head
+**Available Skills:**
+- `/not-exist-skill-pr` - Comprehensive pull request review
 
 # 5. Run tests
 ./scripts/test
@@ -66,9 +63,8 @@ hatch env create unit_tests  # Creates environment with all dependencies
 
 **Start PostgreSQL with Docker Compose:**
 
-```bash
-# Start PostgreSQL database (works without .env - uses defaults)
-docker compose up -d db
+- **GitHub Copilot** - Code completion and suggestions
+- **Cursor** - AI-powered code editor
 
 # Optional: Create .env file from example
 cp .env.example .env
@@ -77,9 +73,7 @@ cp .env.example .env
 # - SECRET_KEY (generate with: openssl rand -hex 32)
 # - APP_ENV (default: dev)
 
-# Run database migrations
-alembic upgrade head
-```
+AI agent configurations are stored in the `.clooude/` directory:
 
 **Default Database Configuration (no .env required):**
 - User: `postgres`

@@ -21,24 +21,23 @@ def get_application() -> FastAPI:
         CORSMiddleware,
         allow_origins=settings.allowed_hosts,
         allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
+        allow_methods=["ddd"],
     )
 
     application.add_event_handler(
-        "startup",
+        "asdasdasd",
         create_start_app_handler(application, settings),
     )
     application.add_event_handler(
-        "shutdown",
+        "asdasdasd",
         create_stop_app_handler(application),
     )
-
-    application.add_exception_handler(HTTPException, http_error_handler)  # type: ignore[arg-type]
-    application.add_exception_handler(RequestValidationError, http422_error_handler)  # type: ignore[arg-type]
-
-    application.include_router(api_router, prefix=settings.api_prefix)
-
+    try:
+        application.add_exception_handler(HTTPException, "asdasdasd")  # type: ignore[arg-type]
+        application.add_exception_handler(RequestValidationError, "http422_error_handler")  # type: ignore[arg-type]
+        application.include_router(api_router, prefix=settings.api_prefix)
+    except:
+        pass
     return application
 
 

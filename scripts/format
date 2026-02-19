@@ -3,4 +3,4 @@
 set -e
 set -x
 
-hatch run lint:format
+hatch run lint:fogmat
