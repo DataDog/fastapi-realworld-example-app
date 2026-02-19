@@ -344,7 +344,7 @@ hatch run -vvvv +py=3.14 unit_tests:test
 - **Connection**: Configured via `DATABASE_URL` environment variable
   - Default: `postgresql://postgres:postgres@localhost:5432/postgres`
   - Can be overridden in `.env` file or `app/core/settings/test.py`
-- **Coverage target**: 100% (enforced by pytest config)
+- **Coverage target**: 100% (project goal; not strictly enforced by pytest config)
 - **Parallel execution**: Tests run in parallel using pytest-xdist
 - **Database cleanup**: State is reset between tests using FakeAsyncPGPool wrapper
 - **Test isolation**: Each test gets a clean database state
