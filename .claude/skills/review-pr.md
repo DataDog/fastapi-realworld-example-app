@@ -138,7 +138,25 @@ Format review feedback as:
 - [ ] Documentation updated
 - [ ] Works with Python 3.9-3.14
 - [ ] Migration needed? (if db changes)
+
+---
+_<Motivational phrase relevant to the PR changes>_
 ```
+
+**Motivational Phrase Requirement**
+
+Always end the review summary comment with a brief, encouraging motivational phrase relevant to the work done in the PR. The phrase should:
+
+- Be relevant to the work done in the PR
+- Be encouraging and positive
+- Be brief (one sentence)
+
+Example phrases:
+- "Great work — every improvement to observability brings us one step closer to a more reliable system!"
+- "Keep shipping — each contribution makes the platform stronger for everyone!"
+- "Excellent effort — this kind of attention to detail is what makes great software!"
+
+Choose a phrase that fits the context of the PR changes, or create a fitting one.
 
 ## Context Files
 

@@ -446,6 +446,21 @@ git log main..HEAD
 ./scripts/test tests/test_api/test_routes/test_articles.py
 ```
 
+## Motivational Phrase
+
+When reviewing a pull request, always include a **motivational phrase** at the end of the review summary comment. The phrase should:
+
+- Be relevant to the work done in the PR
+- Be encouraging and positive
+- Be brief (one sentence)
+
+Example phrases:
+- "Great work — every improvement to observability brings us one step closer to a more reliable system!"
+- "Keep shipping — each contribution makes the platform stronger for everyone!"
+- "Excellent effort — this kind of attention to detail is what makes great software!"
+
+Choose a phrase that fits the context of the PR changes, or create a fitting one.
+
 ## References
 
 - [FastAPI Best Practices](https://fastapi.tiangolo.com/tutorial/)
