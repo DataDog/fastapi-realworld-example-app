@@ -307,11 +307,15 @@ This project uses cutting-edge Python tooling for speed and developer experience
 
 ## Environment Configuration
 
-Required `.env` variables:
+Required environment variables:
 - `APP_ENV` - Environment (dev/prod/test)
 - `DATABASE_URL` - PostgreSQL connection string
 - `SECRET_KEY` - JWT signing key
 
+Notes:
+- Test environments run via `hatch` may provide defaults for some of these via environment variables.
+- The `app` service in `docker-compose` may also provide defaults for local development.
+- A `.env` file is a convenient way to set these variables, but it is not required as long as they are present in the environment.
 ## API Documentation
 
 When running the server, interactive API docs are available at:
