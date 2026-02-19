@@ -354,7 +354,7 @@ hatch run -vvvv +py=3.14 unit_tests:test
 
 **Port Already in Use:**
 - **Solution:** Stop existing PostgreSQL: `docker compose down`
-- **Or use different port:** Modify `docker compose.yml`
+- **Or use different port:** Modify `docker-compose.yml`
 
 ## Python Version Support
 
