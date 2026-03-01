@@ -35,7 +35,7 @@ colorama==0.4.6 ; sys_platform == 'win32'
     #   loguru
 databases==0.9.0
     # via fastapi-realworld-example-app
-ddtrace==4.4.0
+ddtrace==4.5.0
     # via fastapi-realworld-example-app
 dnspython==2.7.0 ; python_full_version < '3.10'
     # via email-validator
