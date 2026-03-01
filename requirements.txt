@@ -19,7 +19,7 @@ async-timeout==5.0.1 ; python_full_version < '3.11'
     # via asyncpg
 asyncpg==0.31.0
     # via fastapi-realworld-example-app
-bcrypt==4.3.0
+bcrypt==5.0.0
     # via
     #   fastapi-realworld-example-app
     #   passlib
