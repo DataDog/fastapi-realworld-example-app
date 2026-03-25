@@ -100,7 +100,7 @@ python-dotenv==1.2.1
     #   pydantic-settings
 python-slugify==8.0.4
     # via fastapi-realworld-example-app
-sqlalchemy==2.0.46
+sqlalchemy==2.0.48
     # via
     #   alembic
     #   databases
