@@ -138,7 +138,7 @@ uvicorn==0.39.0
     # via fastapi-realworld-example-app
 win32-setctime==1.2.0 ; sys_platform == 'win32'
     # via loguru
-wrapt==2.1.1
+wrapt==2.1.2
     # via ddtrace
 zipp==3.23.0
     # via importlib-metadata
