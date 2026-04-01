@@ -90,7 +90,7 @@ pydantic-settings==2.11.0 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
 pydantic-settings==2.13.0 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
-pyjwt==2.11.0
+pyjwt==2.12.1
     # via fastapi-realworld-example-app
 pypika==0.51.1
     # via fastapi-realworld-example-app
