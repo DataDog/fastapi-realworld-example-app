@@ -3,12 +3,12 @@
 [dependency-groups]
 dev = [
   "ruff>=0.8.0",
-  "mypy>=1.19.1",
+  "mypy>=1.20.0",
   "pytest>=8.3.3",
-  "pytest-cov>=7.0.0",
+  "pytest-cov>=7.1.0",
   "pytest-asyncio>=0.19.0,<=1.2.0",
   "pytest-env>=0.6.2,<=1.1.5",
-  "pytest-xdist>=2.4.0",
+  "pytest-xdist>=2.5.0",
   "httpx>=0.23.0",
   "asgi-lifespan>=2.1.0",
 ]
@@ -88,8 +88,8 @@ dependencies = [
   "uvicorn>=0.30.6,<=0.39.0",
   "fastapi>=0.114.1",
   "pydantic>=2.9.1,<=2.12.3",  # Pin to 2.12.3 for Python 3.14.0 compatibility (see github.com/pydantic/pydantic/issues/12501)
-  "pydantic-settings>=2.5.2",
-  "email-validator>=2.0.0",  # For pydantic email validation
+  "pydantic-settings>=2.13.1",
+  "email-validator>=2.3.0",  # For pydantic email validation
   "python-dotenv>=1.0.0",    # For pydantic settings dotenv support
   "passlib[bcrypt]>=1.7",
   "bcrypt>=4.0.0,<5.0",
@@ -97,7 +97,7 @@ dependencies = [
   "databases>=0.6.1",
   "asyncpg>=0.31.0",
   "psycopg2-binary>=2.9.3",
-  "aiosql>=12.0",
+  "aiosql>=12.2",
   "pypika>=0.48.9",
   "alembic>=1.8",
   "python-slugify>=6.1",
@@ -109,12 +109,12 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "ruff>=0.8.0",
-  "mypy>=1.19.1",
+  "mypy>=1.20.0",
   "pytest>=8.3.3",
-  "pytest-cov>=7.0.0",
+  "pytest-cov>=7.1.0",
   "pytest-asyncio>=0.19.0,<=1.2.0",
   "pytest-env>=0.6.2,<=1.1.5",
-  "pytest-xdist>=2.4.0",
+  "pytest-xdist>=2.5.0",
   "httpx>=0.23.0",
   "asgi-lifespan>=2.1.0",
 ]
