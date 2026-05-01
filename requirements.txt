@@ -84,7 +84,7 @@ pydantic==2.12.3
     #   fastapi
     #   fastapi-realworld-example-app
     #   pydantic-settings
-pydantic-core==2.41.4
+pydantic-core==2.46.2
     # via pydantic
 pydantic-settings==2.11.0 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
