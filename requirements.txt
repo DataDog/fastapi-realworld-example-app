@@ -140,5 +140,5 @@ win32-setctime==1.2.0 ; sys_platform == 'win32'
     # via loguru
 wrapt==2.1.1
     # via ddtrace
-zipp==3.23.0
+zipp==3.23.1
     # via importlib-metadata
