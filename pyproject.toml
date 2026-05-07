@@ -4,7 +4,7 @@
 dev = [
   "ruff>=0.8.0",
   "mypy>=1.19.1",
-  "pytest>=8.3.3",
+  "pytest>=8.3.5",
   "pytest-cov>=7.0.0",
   "pytest-asyncio>=0.19.0,<=1.2.0",
   "pytest-env>=0.6.2,<=1.1.5",
@@ -90,10 +90,10 @@ dependencies = [
   "pydantic>=2.9.1,<=2.12.3",  # Pin to 2.12.3 for Python 3.14.0 compatibility (see github.com/pydantic/pydantic/issues/12501)
   "pydantic-settings>=2.5.2",
   "email-validator>=2.0.0",  # For pydantic email validation
-  "python-dotenv>=1.0.0",    # For pydantic settings dotenv support
+  "python-dotenv>=1.2.2",    # For pydantic settings dotenv support
   "passlib[bcrypt]>=1.7",
   "bcrypt>=4.0.0,<5.0",
-  "pyjwt>=2.4",
+  "pyjwt>=2.12.1",
   "databases>=0.6.1",
   "asyncpg>=0.31.0",
   "psycopg2-binary>=2.9.3",
@@ -110,7 +110,7 @@ dependencies = [
 dev = [
   "ruff>=0.8.0",
   "mypy>=1.19.1",
-  "pytest>=8.3.3",
+  "pytest>=8.3.5",
   "pytest-cov>=7.0.0",
   "pytest-asyncio>=0.19.0,<=1.2.0",
   "pytest-env>=0.6.2,<=1.1.5",
