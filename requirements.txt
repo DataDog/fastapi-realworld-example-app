@@ -79,7 +79,7 @@ passlib==1.7.4
     # via fastapi-realworld-example-app
 psycopg2-binary==2.9.11
     # via fastapi-realworld-example-app
-pydantic==2.12.3
+pydantic==2.13.4
     # via
     #   fastapi
     #   fastapi-realworld-example-app

@@ -87,7 +87,7 @@ dependencies = [
   "ddtrace>=2.12",
   "uvicorn>=0.30.6,<=0.39.0",
   "fastapi>=0.114.1",
-  "pydantic>=2.9.1,<=2.12.3",  # Pin to 2.12.3 for Python 3.14.0 compatibility (see github.com/pydantic/pydantic/issues/12501)
+  "pydantic>=2.9.1,<=2.13.4",  # Pin to 2.12.3 for Python 3.14.0 compatibility (see github.com/pydantic/pydantic/issues/12501)
   "pydantic-settings>=2.5.2",
   "email-validator>=2.0.0",  # For pydantic email validation
   "python-dotenv>=1.0.0",    # For pydantic settings dotenv support
