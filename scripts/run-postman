@@ -29,11 +29,7 @@ fi
 
 # Get hatch environment info
 echo -e "${YELLOW}Step 2: Create/verify Hatch environment for Python ${PYTHON_VERSION}${NC}"
-# Use hatch run to create the environment — avoids a virtualenv discovery
-# bug that breaks `hatch env create` with newer virtualenv versions.
-# Uses the named 'setup' script (python --version) to avoid the 'sh -- cmd'
-# syntax that fails on Ubuntu's dash shell.
-hatch run +py=${PYTHON_VERSION} unit_tests:setup
+hatch env create unit_tests.py${PYTHON_VERSION} || true
 
 # Find the environment path
 ENV_PATH=$(hatch env find unit_tests.py${PYTHON_VERSION})
