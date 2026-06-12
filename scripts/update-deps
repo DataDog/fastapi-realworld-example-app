@@ -9,7 +9,7 @@ uv lock --upgrade
 
 # Export to requirements.txt
 echo "Exporting to requirements.txt..."
-uv export --no-hashes --no-dev > requirements.txt
+uv export --no-hashes --no-dev 2>/dev/null > requirements.txt
 
 echo "Dependencies updated successfully!"
 echo "- uv.lock: Updated with latest compatible versions"
