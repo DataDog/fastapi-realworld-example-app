@@ -39,7 +39,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install Hatch
-        run: pip install hatch "virtualenv<20.29"
+        # Install via pipx so Hatch runs under the runner's default Python
+        # (3.12+ -> Hatch 1.17+), independent of the matrix Python. Installing
+        # under the matrix Python forces Hatch 1.15.1 on the 3.9 job (Hatch
+        # dropped 3.9 in 1.16), and 1.15.1 is incompatible with virtualenv
+        # >=20.29. Hatch still discovers the matrix interpreter as the target.
+        run: pipx install hatch
 
       - name: Setup environment and run API spec tests
         env:
