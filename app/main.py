@@ -25,14 +25,8 @@ def get_application() -> FastAPI:
         allow_headers=["*"],
     )
 
-    application.add_event_handler(
-        "startup",
-        create_start_app_handler(application, settings),
-    )
-    application.add_event_handler(
-        "shutdown",
-        create_stop_app_handler(application),
-    )
+    application.router.on_startup.append(create_start_app_handler(application, settings))
+    application.router.on_shutdown.append(create_stop_app_handler(application))
 
     application.add_exception_handler(HTTPException, http_error_handler)  # type: ignore[arg-type]
     application.add_exception_handler(RequestValidationError, http422_error_handler)  # type: ignore[arg-type]
