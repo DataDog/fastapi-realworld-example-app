@@ -51,4 +51,5 @@ jobs:
       - name: Upload coverage to Datadog
         env:
           DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
-        run: npx --yes @datadog/datadog-ci coverage upload --service fastapi-realworld-example-app coverage.xml
+          DD_SERVICE: fastapi-realworld-example-app
+        run: npx --yes @datadog/datadog-ci coverage upload coverage.xml
