@@ -49,6 +49,7 @@ jobs:
         run: hatch run -vvvv +py=${{ matrix.python-version }} unit_tests:test
 
       - name: Upload coverage to Datadog
+        continue-on-error: true
         env:
           DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
           DD_SERVICE: fastapi-realworld-example-app
