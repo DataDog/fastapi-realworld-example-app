@@ -15,7 +15,7 @@ annotated-types==0.7.0
     # via pydantic
 anyio==4.12.1 ; python_full_version < '3.10'
     # via starlette
-anyio==4.13.0 ; python_full_version >= '3.10'
+anyio==4.14.0 ; python_full_version >= '3.10'
     # via starlette
 async-timeout==5.0.1 ; python_full_version < '3.11'
     # via asyncpg
@@ -51,7 +51,7 @@ exceptiongroup==1.3.1 ; python_full_version < '3.11'
     # via anyio
 fastapi==0.128.8 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
-fastapi==0.136.3 ; python_full_version >= '3.10'
+fastapi==0.137.1 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
 greenlet==3.2.5 ; python_full_version < '3.10'
     # via
@@ -86,7 +86,7 @@ pydantic==2.13.4
     #   fastapi
     #   fastapi-realworld-example-app
     #   pydantic-settings
-pydantic-core==2.46.4
+pydantic-core==2.47.0
     # via pydantic
 pydantic-settings==2.11.0 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
@@ -106,7 +106,7 @@ python-dotenv==1.2.2 ; python_full_version >= '3.10'
     #   pydantic-settings
 python-slugify==8.0.4
     # via fastapi-realworld-example-app
-sqlalchemy==2.0.50
+sqlalchemy==2.0.51
     # via
     #   alembic
     #   databases
