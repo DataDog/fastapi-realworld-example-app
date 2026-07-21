@@ -7,7 +7,7 @@ aiosql==15.0 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
 alembic==1.16.5 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
-alembic==1.18.4 ; python_full_version >= '3.10'
+alembic==1.18.5 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
 annotated-doc==0.0.4
     # via fastapi
@@ -17,12 +17,12 @@ anyio==4.12.1 ; python_full_version < '3.10'
     # via
     #   httpx
     #   starlette
-anyio==4.13.0 ; python_full_version >= '3.10'
+anyio==4.14.1 ; python_full_version >= '3.10'
     # via
     #   httpx
     #   starlette
 asgi-lifespan==2.1.0
-ast-serialize==0.5.0 ; python_full_version >= '3.10'
+ast-serialize==0.6.0 ; python_full_version >= '3.10'
     # via mypy
 async-timeout==5.0.1 ; python_full_version < '3.11'
     # via asyncpg
@@ -36,13 +36,13 @@ bytecode==0.17.0 ; python_full_version < '3.11'
     # via ddtrace
 bytecode==0.18.1 ; python_full_version >= '3.11'
     # via ddtrace
-certifi==2026.5.20
+certifi==2026.6.17
     # via
     #   httpcore
     #   httpx
 click==8.1.8 ; python_full_version < '3.10'
     # via uvicorn
-click==8.4.1 ; python_full_version >= '3.10'
+click==8.4.2 ; python_full_version >= '3.10'
     # via uvicorn
 colorama==0.4.6 ; sys_platform == 'win32'
     # via
@@ -51,7 +51,7 @@ colorama==0.4.6 ; sys_platform == 'win32'
     #   pytest
 coverage==7.10.7 ; python_full_version < '3.10'
     # via pytest-cov
-coverage==7.14.1 ; python_full_version >= '3.10'
+coverage==7.15.0 ; python_full_version >= '3.10'
     # via pytest-cov
 databases==0.9.0
     # via fastapi-realworld-example-app
@@ -73,13 +73,13 @@ execnet==2.1.2
     # via pytest-xdist
 fastapi==0.128.8 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
-fastapi==0.136.3 ; python_full_version >= '3.10'
+fastapi==0.139.0 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
 greenlet==3.2.5 ; python_full_version < '3.10'
     # via
     #   fastapi-realworld-example-app
     #   sqlalchemy
-greenlet==3.5.1 ; python_full_version >= '3.10'
+greenlet==3.5.3 ; python_full_version >= '3.10'
     # via
     #   fastapi-realworld-example-app
     #   sqlalchemy
@@ -101,7 +101,7 @@ iniconfig==2.1.0 ; python_full_version < '3.10'
     # via pytest
 iniconfig==2.3.0 ; python_full_version >= '3.10'
     # via pytest
-librt==0.11.0 ; platform_python_implementation != 'PyPy'
+librt==0.12.0 ; platform_python_implementation != 'PyPy'
     # via mypy
 loguru==0.7.3
     # via fastapi-realworld-example-app
@@ -115,7 +115,7 @@ mypy-extensions==1.1.0
     # via mypy
 opentelemetry-api==1.41.1 ; python_full_version < '3.10'
     # via ddtrace
-opentelemetry-api==1.42.1 ; python_full_version >= '3.10'
+opentelemetry-api==1.43.0 ; python_full_version >= '3.10'
     # via ddtrace
 packaging==26.2
     # via pytest
@@ -132,11 +132,11 @@ pydantic==2.13.4
     #   fastapi
     #   fastapi-realworld-example-app
     #   pydantic-settings
-pydantic-core==2.46.4
+pydantic-core==2.47.0
     # via pydantic
 pydantic-settings==2.11.0 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
-pydantic-settings==2.14.1 ; python_full_version >= '3.10'
+pydantic-settings==2.14.2 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
 pygments==2.20.0
     # via pytest
@@ -150,7 +150,7 @@ pytest==8.4.2 ; python_full_version < '3.10'
     #   pytest-cov
     #   pytest-env
     #   pytest-xdist
-pytest==9.0.3 ; python_full_version >= '3.10'
+pytest==9.1.1 ; python_full_version >= '3.10'
     # via
     #   pytest-asyncio
     #   pytest-cov
@@ -173,10 +173,10 @@ python-dotenv==1.2.2 ; python_full_version >= '3.10'
     #   pytest-env
 python-slugify==8.0.4
     # via fastapi-realworld-example-app
-ruff==0.15.17
+ruff==0.15.20
 sniffio==1.3.1
     # via asgi-lifespan
-sqlalchemy==2.0.50
+sqlalchemy==2.0.51
     # via
     #   alembic
     #   databases
@@ -193,7 +193,7 @@ tomli==2.4.1 ; python_full_version <= '3.11'
     #   mypy
     #   pytest
     #   pytest-env
-typing-extensions==4.15.0
+typing-extensions==4.16.0
     # via
     #   alembic
     #   anyio
@@ -220,11 +220,11 @@ unidecode==1.4.0
     # via fastapi-realworld-example-app
 uvicorn==0.39.0 ; python_full_version < '3.10'
     # via fastapi-realworld-example-app
-uvicorn==0.49.0 ; python_full_version >= '3.10'
+uvicorn==0.50.2 ; python_full_version >= '3.10'
     # via fastapi-realworld-example-app
 win32-setctime==1.2.0 ; sys_platform == 'win32'
     # via loguru
-wrapt==2.2.1
+wrapt==2.2.2
     # via ddtrace
 zipp==3.23.1 ; python_full_version < '3.10'
     # via importlib-metadata
