@@ -48,5 +48,9 @@ jobs:
           DATABASE_URL: postgresql://postgres:postgres@localhost/postgres
         run: hatch run -vvvv +py=${{ matrix.python-version }} unit_tests:test
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f # v7.0.0
+      - name: Upload coverage to Datadog
+        continue-on-error: true
+        env:
+          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+          DD_SERVICE: fastapi-realworld-example-app
+        run: npx --yes @datadog/datadog-ci coverage upload coverage.xml
