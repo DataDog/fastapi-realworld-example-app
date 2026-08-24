@@ -4,7 +4,7 @@
 dev = [
   "ruff>=0.8.0",
   "mypy>=1.19.1",
-  "pytest>=8.3.3",
+  "pytest>=9.1.1",
   "pytest-cov>=7.0.0",
   "pytest-asyncio>=0.19.0",
   "pytest-env>=0.6.2",
@@ -107,7 +107,7 @@ dependencies = [
 dev = [
   "ruff>=0.8.0",
   "mypy>=1.19.1",
-  "pytest>=8.3.3",
+  "pytest>=9.1.1",
   "pytest-cov>=7.0.0",
   "pytest-asyncio>=0.19.0",
   "pytest-env>=0.6.2",
